@@ -877,13 +877,13 @@ class Overlay(Gtk.Window):
     # ---- demo
 
     def start_demo(self):
-        names = ["aki", "Gecko", "Meloni", "Bubi"]
+        names = ["User1", "User2", "User3", "User4"]
         self.ui["accent"] = "#23a55a"
         self.on_message({"t": "state", "channel": {"name": "Lounge", "guild": "Chilling"},
                          "users": [{"id": str(i), "name": n, "avatar": None, "me": i == 0,
                                     "mute": i == 2, "deaf": i == 3, "video": i in (0, 1), "live": i == 1}
                                    for i, n in enumerate(names)]})
-        self.on_message({"t": "toast", "kind": "join", "text": "Gecko joined"})
+        self.on_message({"t": "toast", "kind": "join", "text": "User2 joined"})
         self._demo_t = 0.0
 
         def step():

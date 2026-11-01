@@ -424,6 +424,9 @@ class Overlay(Gtk.Window):
         cr.fill()
 
     def draw_avatar(self, cr, p, cx, cy, radius, alpha):
+        # Text drawing leaves a "current point" behind; without this the ring's
+        # arc would start with a stray line from the previous row's label.
+        cr.new_path()
         accent = hex_rgb(self.ui.get("accent"))
         if p.glow > 0.01 and self.ui.get("style") == "discord":
             cr.arc(cx, cy, radius + 1.5, 0, 2 * math.pi)
